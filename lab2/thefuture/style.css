@@ -1,0 +1,34 @@
+.grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(10, 1fr);
+    grid-gap: 10px;
+    
+    
+
+
+}
+
+.grid div{
+    text-transform: uppercase;
+    font-size: 30px;
+    text-align:center;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+
+.box1, .box2, .box4, .box5, .box7, .box8, .box9, .box10{
+    background-color: red;
+}
+
+.box3{
+    background-color:cyan;
+}
+
+.box6{
+    background-color: yellow;
+}
+
+
