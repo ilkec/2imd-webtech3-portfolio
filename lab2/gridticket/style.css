@@ -1,0 +1,71 @@
+*{
+    box-sizing: border-box;
+}
+
+
+
+.ticket{
+    text-transform: uppercase;
+    width: 260px;
+    
+    display: grid;
+    grid-template-columns: 1f;
+    background-image: url(concertimage.png);
+    background-size: 350px;
+    background-repeat: no-repeat;
+    backdrop-filter: brightness(4);
+    
+}
+
+#header{
+    display: grid;
+    background-color: black;
+    grid-template-rows: repeat(2, 50px);
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+
+h1{
+    font-size: 32px;
+    margin: 0;    
+}
+#header p{
+    font-size: 10px;
+    font-weight: 100;
+    letter-spacing: 0.3em;
+    margin: 0;
+}
+
+#qr-image{
+    margin: 50px 0px;
+    
+}
+#qr{
+    display:block;
+    width: 180px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+#info{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 50px);    
+}
+
+#info div{
+    font-weight:bold;
+    border: 1px solid black;
+    
+    
+}
+
+#info div:nth-child(3){
+    grid-column: 1/3;
+}
+
+
+
+
