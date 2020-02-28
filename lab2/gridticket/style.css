@@ -57,8 +57,7 @@ h1{
 #info div{
     font-weight:bold;
     border: 1px solid black;
-    
-    
+    text-align: center;  
 }
 
 #info div:nth-child(3){
@@ -71,11 +70,17 @@ h1{
         width: 800px;
         grid-template-columns: repeat(2, 1fr); 
         border: 1px solid black;
+        background-size: 800px;
     }
 
     #header{
         background-color: transparent;
         color: black;
+    }
+
+    #header h1{
+        font-size: 50px;
+        
     }
 
 }
