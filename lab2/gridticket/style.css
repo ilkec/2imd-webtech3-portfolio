@@ -87,10 +87,12 @@ h1{
         font-size: 72px;
         grid-row: 2;
         padding: 0px 73px;
+        padding-bottom: 45px;
     }
 
     #header p{
         text-align: center;
+        padding-top: 70px;
     }
 
     #qr-image{
@@ -117,7 +119,8 @@ h1{
         font-size: 12px;
     }
     #info div{
-        font-size: 24px; 
+        font-size: 24px;
+        padding-top: 10px; 
     }
 
 }
