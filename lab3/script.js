@@ -14,6 +14,7 @@ class Note {
     newNote.appendChild(newP);              // <div class="card"> <p> To do</p>
     
     let newA = document.createElement('a');
+    newA.setAttribute("class", "card-remove");  
     newA.innerHTML = "Remove";
     newNote.appendChild(newA);
     newA.addEventListener('click', this.remove.bind(newNote));
@@ -24,12 +25,14 @@ class Note {
   add(){
 
     document.querySelector(".notes").appendChild(this.element);
+    
     // HINT🤩
     // this function should append the note to the screen somehow
   }
   
   saveToStorage(){
     // HINT🤩
+
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
   }
@@ -50,10 +53,23 @@ class App {
     // pressing the enter key should also work
     this.btnAdd = document.querySelector("#btnAddNote");
     this.btnAdd.addEventListener("click", this.createNote.bind(this));
-    // this.loadNotesFromStorage();
+
+    this.enter = document.querySelector('input');
+    this.enter.addEventListener('keydown', (e) => {
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        document.querySelector("#btnAddNote").click();
+      }
+    });
+    
   }
+    // this.loadNotesFromStorage();
+  
   
   loadNotesFromStorage() {
+  
+
+
     // HINT🤩
     // load all notes from storage here and add them to the screen
     // something like note.add() in a loop would be nice
