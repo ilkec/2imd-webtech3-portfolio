@@ -33,6 +33,8 @@ class Note {
   
   saveToStorage(){
     //store notes into a variable
+    // gewerkt met voorbeeld van leerkracht via https://codepen.io/goodbytes/pen/ExjRGGx  
+    // + uitleg van Timothy 
     let saveNotes = JSON.parse(localStorage.getItem("storedItems"))  || []; 
     saveNotes.push(this.title); 
     localStorage.setItem("storedItems", JSON.stringify(saveNotes));
@@ -52,8 +54,8 @@ class Note {
 
     let storedNotesRemove = JSON.parse(localStorage.getItem("storedItems"));
     //console.log(storedNotesRemove);
-    let todo = this.querySelector("p").innerHTML;
-    console.log(todo);                       //need to get what is in the p tag to put into the splice
+    let todo = this.querySelector("p").innerHTML;   //need to get what is in the p tag to put into the splice
+    //console.log(todo);                       
     const storedIndex = storedNotesRemove.indexOf(todo);
     //console.log(storedIndex);
     if (storedIndex > -1) {
@@ -118,11 +120,12 @@ class App {
     note.add();
     note.saveToStorage();
     
-    // this.reset();
+    this.reset();
   }
   
   reset(){
-    // this function should reset the form 
+    document.querySelector("#txtAddNote").value= "";
+    
   }
   
 }
