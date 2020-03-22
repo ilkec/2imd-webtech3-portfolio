@@ -52,10 +52,13 @@ class Note {
 
     let storedNotesRemove = JSON.parse(localStorage.getItem("storedItems"));
     //console.log(storedNotesRemove);
-    let todo = document.querySelector("p").innerHTML;                       //need to get what is in the p tag to put into the splice
+    let todo = this.querySelector("p").innerHTML;
+    console.log(todo);                       //need to get what is in the p tag to put into the splice
     const storedIndex = storedNotesRemove.indexOf(todo);
-    console.log(storedIndex);
-    storedNotesRemove.splice(storedIndex, 1);
+    //console.log(storedIndex);
+    if (storedIndex > -1) {
+      storedNotesRemove.splice(storedIndex, 1);
+    }
     
     localStorage.setItem("storedItems", JSON.stringify(storedNotesRemove));
     
