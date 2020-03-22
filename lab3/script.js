@@ -36,10 +36,6 @@ class Note {
     let saveNotes = JSON.parse(localStorage.getItem("storedItems"))  || []; 
     saveNotes.push(this.title); 
     localStorage.setItem("storedItems", JSON.stringify(saveNotes));
-      
-
-  
-  
     
     // HINT🤩
 
@@ -48,7 +44,22 @@ class Note {
   }
   
   remove(){
-    this.remove();
+    
+    this.remove(); //removes note in the app
+
+    //gemaakt met voorbeeld via https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
+    //en via https://developer.mozilla.org/nl/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+
+    let storedNotesRemove = JSON.parse(localStorage.getItem("storedItems"));
+    //console.log(storedNotesRemove);
+    let todo = document.querySelector("p").innerHTML;                       //need to get what is in the p tag to put into the splice
+    const storedIndex = storedNotesRemove.indexOf(todo);
+    console.log(storedIndex);
+    storedNotesRemove.splice(storedIndex, 1);
+    
+    localStorage.setItem("storedItems", JSON.stringify(storedNotesRemove));
+    
+  
 
     
     // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
@@ -78,7 +89,6 @@ class App {
   }
    
   
-  
   loadNotesFromStorage() {
 
     //get the value of the storage item
@@ -92,12 +102,6 @@ class App {
     
       
   });
-  
-    
-    
-  
-
-
     // HINT🤩
     // load all notes from storage here and add them to the screen
     // something like note.add() in a loop would be nice
