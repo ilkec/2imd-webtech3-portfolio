@@ -33,9 +33,9 @@ class Note {
   
   saveToStorage(){
     //store notes into a variable
-    let saveNotes = JSON.parse(localStorage.getItem("noteItems"))  || []; 
+    let saveNotes = JSON.parse(localStorage.getItem("storedItems"))  || []; 
     saveNotes.push(this.title); 
-    localStorage.setItem("noteItems", JSON.stringify(saveNotes));
+    localStorage.setItem("storedItems", JSON.stringify(saveNotes));
       
 
   
@@ -49,6 +49,8 @@ class Note {
   
   remove(){
     this.remove();
+
+    
     // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
     // in this function, 'this' will refer to the current note element
   } 
@@ -80,10 +82,16 @@ class App {
   loadNotesFromStorage() {
 
     //get the value of the storage item
-    
-    //document.querySelector(".notes").innerHTML = storedNote; 
+    //for each item in that storage, make a new note and add it to the to do list
 
- 
+    // gewerkt met voorbeeld van leerkracht via https://codepen.io/goodbytes/pen/ExjRGGx  
+    let storedNotes = JSON.parse(localStorage.getItem("storedItems")) || [];
+    storedNotes.forEach(storedItem => {
+    let item = new Note(storedItem);
+    item.add();
+    
+      
+  });
   
     
     
