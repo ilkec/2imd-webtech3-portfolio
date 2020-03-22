@@ -5,32 +5,42 @@ class Note {
   }
   
   createElement(title){
-    let newNote = document.createElement('div'); // created <div>
-    newNote.setAttribute("class", "card");       // <div class="card">
+    let newNote = document.createElement('div');                 // created <div>
+    newNote.setAttribute("class", "card");                       // <div class="card">
 
-    let newP = document.createElement('p');     //<p>ToDo</p>
+    let newP = document.createElement('p');                      //<p>ToDo</p>
     newP.innerHTML = title;
 
-    newNote.appendChild(newP);              // <div class="card"> <p> To do</p>
+    newNote.appendChild(newP);                                  // <div class="card"> <p> To do</p>
     
-    let newA = document.createElement('a');
-    newA.setAttribute("class", "card-remove");  
+    //samengewerkt in de klas met Hannah De Wachter
+    let newA = document.createElement('a');                     //created <a></a>
+    newA.setAttribute("class", "card-remove");                  //<a> gets a class named card-remove
     newA.innerHTML = "Remove";
-    newNote.appendChild(newA);
-    newA.addEventListener('click', this.remove.bind(newNote));
+    newNote.appendChild(newA);                                  //added remove option to newNote
+    newA.addEventListener('click', this.remove.bind(newNote));  
     
     return newNote;
   }
   
   add(){
 
-    document.querySelector(".notes").appendChild(this.element);
+    document.querySelector(".notes").appendChild(this.element); //filled in a new To do? Enter and append to the list
     
     // HINT🤩
     // this function should append the note to the screen somehow
   }
   
   saveToStorage(){
+    //store notes into a variable
+    let saveNotes = JSON.parse(localStorage.getItem("noteItems"))  || []; 
+    saveNotes.push(this.title); 
+    localStorage.setItem("noteItems", JSON.stringify(saveNotes));
+      
+
+  
+  
+    
     // HINT🤩
 
     // localStorage only supports strings, not arrays
@@ -61,12 +71,22 @@ class App {
         document.querySelector("#btnAddNote").click();
       }
     });
+    this.loadNotesFromStorage();
     
   }
-    // this.loadNotesFromStorage();
+   
   
   
   loadNotesFromStorage() {
+
+    //get the value of the storage item
+    
+    //document.querySelector(".notes").innerHTML = storedNote; 
+
+ 
+  
+    
+    
   
 
 
@@ -81,7 +101,8 @@ class App {
     // HINT🤩
     let note = new Note(text);
     note.add();
-    // note.saveToStorage();
+    note.saveToStorage();
+    
     // this.reset();
   }
   
