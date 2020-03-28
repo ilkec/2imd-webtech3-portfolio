@@ -3,6 +3,9 @@ class App{
         this.getLocation(); // locatie opvragen
         this.latitude;
         this.longitude;
+        
+        this.getHarryPotter();
+       
 
     }
 
@@ -18,23 +21,60 @@ class App{
     }
 
     getWeather(){
-        //https://api.darksky.net/forecast/d145d0c7d1afd4308919998c4a684254/37.8267,-122.4233
-        let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/d145d0c7d1afd4308919998c4a684254/${this.latitude},${this.longitude}?units=si`;
+       
+        let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/ebc82f2bff35c1505e89cb0d39b47c91/${this.latitude},${this.longitude}?units=si`;
         fetch(url).then(response => {   //als er een respons is sturen we deze in een json formaat
             return response.json();
         }).then(data => {
-            console.log(data);
-        }).catch(err => {
-            console.log(err);
-        })
-
+           
+            let weather = Math.round(data.currently.temperature);
+            document.querySelector("#summary").innerHTML = data.currently.summary;
+            document.querySelector("#temperature").innerHTML = weather + " °C";
+            
+            this.getHarryPotter(weather);
+            
+        }).catch(error => {
+            console.log("foutje");
+        });
         
+    }
+    
+
+    getHarryPotter(weather){
+
+        let wizzardId;
+        let temp;
+
+       if (weather > 20){
+           wizzarId = "5a12292a0f5ae10021650d7e";
+           temp = "hot";
+           document.querySelector("#weatherAd").style.backgroundImage = "url('harry_potter.jpg')";
+           
+
+       }else{
+           wizzardId = "5a109af13dc2080021cd877a";
+           temp = "cold";
+           document.querySelector("#weatherAd").style.backgroundImage = "url('hermione.jpg')";
+       }
+
+        let urlPotter = `https://cors-anywhere.herokuapp.com/https://www.potterapi.com/v1/characters?key=$2a$10$rvk.8WbTjkOSWIaa0KpTWuyeUuXITm76LD4lga0L2riSwaIF0UXwu&_id=${wizzardId}` ;
+        
+        
+        
+        fetch(urlPotter).then(response => {   //als er een respons is sturen we deze in een json formaat
+            return response.json();
+        }).then(data => {
+            console.log(data);
+            document.querySelector("#person").innerHTML = data[0].name + " thinks it's too " + `${temp}` + ". Time for a weather spell!";
+           
+            
+        }).catch(error => {
+            console.log("foutje");
+        });
     }
 
     errorLocation(error){
         console.log(error);
     }
-
-
 }
 let app = new App();
