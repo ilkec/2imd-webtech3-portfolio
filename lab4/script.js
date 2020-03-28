@@ -4,7 +4,7 @@ class App{
         this.latitude;
         this.longitude;
         
-        this.getHarryPotter();
+        this.getHarryPotter(weather);
        
 
     }
@@ -22,7 +22,7 @@ class App{
 
     getWeather(){
        
-        let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/ebc82f2bff35c1505e89cb0d39b47c91/${this.latitude},${this.longitude}?units=si`;
+        let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/d145d0c7d1afd4308919998c4a684254/${this.latitude},${this.longitude}?units=si`;
         fetch(url).then(response => {   //als er een respons is sturen we deze in een json formaat
             return response.json();
         }).then(data => {
@@ -39,7 +39,6 @@ class App{
         
     }
     
-
     getHarryPotter(weather){
 
         let wizzardId;
