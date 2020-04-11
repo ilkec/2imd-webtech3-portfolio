@@ -32,7 +32,7 @@ const deleteMessage = (req, res)=>{
 }
 const getMessagesForUser = (req, res)=>{
     res.json({
-        "message": "GETTING message for username" + req.param.username
+        "message": "GETTING message for username" + req.param.username 
     });
 }
 
