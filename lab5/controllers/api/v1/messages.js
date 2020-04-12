@@ -8,9 +8,6 @@ const messageSchema = new Schema({
 
 const Message = mongoose.model('Message', messageSchema);
 
-const getHomepage = (req, res)=>{ 
-    res.send("get homepage");
-}
 
 const getMessages = (req, res)=>{
     res.json({
@@ -68,7 +65,7 @@ const getMessagesForUser = (req, res)=>{
    
 }
 
-module.exports.getHomepage = getHomepage;  //verschillende functies die we een aparte naam kunnen geven
+ //verschillende functies die we een aparte naam kunnen geven
 module.exports.getMessages = getMessages;
 module.exports.getMessagesForId = getMessagesForId;
 module.exports.postNewMessage = postNewMessage;
