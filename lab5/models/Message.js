@@ -6,7 +6,6 @@ const messageSchema = new Schema({
        required: true,
     },
     user: String,
-    completed: Boolean
 });
 
 const Message = mongoose.model('Message', messageSchema);

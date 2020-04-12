@@ -14,12 +14,12 @@ const getMessagesForId = (req, res)=>{
 }
 
 const postNewMessage = (req, res)=>{
-    
+   // console.log(req.body);
     let message = new Message();
-   message.text = "My first message";
-   message.user =  "Joris";
+    message.text = req.body.text;
+    message.user =  req.body.user;
 
-   message.save( (err, doc) => {
+    message.save( (err, doc) => {
        if(!err){
         res.json({
             "status" : "success",
@@ -34,10 +34,11 @@ const postNewMessage = (req, res)=>{
                 "status": "error",
                 "message": "Could not post this new message"
            });
+
        }
+
    })
 
-   
 } 
 const updateMessage = (req, res)=>{
     res.json({
