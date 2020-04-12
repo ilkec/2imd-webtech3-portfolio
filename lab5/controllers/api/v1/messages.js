@@ -2,9 +2,16 @@ const Message = require('../../../models/Message');
 
 
 const getMessages = (req, res)=>{
-    res.json({
-        "message": "getting messages"
-    });
+    Message.find({}, (err, docs) =>{ //zoeken op niets want je moet alle messages eruit krijgen!
+        if(!err){
+            res.json({
+                "status" : "success",
+                "data": {
+                    "message" : docs
+                }
+            }); 
+        }
+    })
 }
 
 const getMessagesForId = (req, res)=>{
