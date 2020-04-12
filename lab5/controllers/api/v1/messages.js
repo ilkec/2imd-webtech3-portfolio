@@ -55,15 +55,29 @@ const postNewMessage = (req, res)=>{
 
 } 
 const updateMessage = (req, res)=>{
-    res.json({
-        "message": "UPDATING a message with id " + req.params.id
-    });
+    //bron: https://mongoosejs.com/docs/queries.html -> Model.findByIdAndUpdate()
+    Message.findByIdAndUpdate(req.params.id,{text:"this needed an update" }, (err, docs) =>{
+        if(!err){
+            res.json({
+                "status" : "success",
+                "data": {
+                    "message" : docs
+                }
+            }); 
+        }
+    })
 } 
 
 const deleteMessage = (req, res)=>{
-    res.json({
-        "message": "DELETING a message with id " + req.params.id
-    });
+    //bron: https://mongoosejs.com/docs/queries.html -> Model.findOneAndRemove() of Model.findByIdAndDelete()
+    Message.findByIdAndDelete(req.params.id, (err, docs) => {
+        if(!err){
+            res.json({
+                "status" : "success",
+                "message" : "The message was removed" 
+            }); 
+        }
+    })
 }
 const getMessagesForUser = (req, res)=>{
     Message.find({"user": req.params.username}, (err, docs) =>{
@@ -79,7 +93,7 @@ const getMessagesForUser = (req, res)=>{
    
 }
 
- //verschillende functies die we een aparte naam kunnen geven
+//verschillende functies die we een aparte naam kunnen geven om ze aan te spreken in de routes!
 module.exports.getMessages = getMessages;
 module.exports.getMessagesForId = getMessagesForId;
 module.exports.postNewMessage = postNewMessage;

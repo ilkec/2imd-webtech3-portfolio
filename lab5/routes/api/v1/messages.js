@@ -15,6 +15,6 @@ router.put("/:id", controllerMessages.updateMessage);
 
 router.delete("/:id", controllerMessages.deleteMessage);
 
-router.get("/?user=username",controllerMessages.getMessagesForUser);
+router.get("/user/username",controllerMessages.getMessagesForUser);
 
 module.exports = router;
