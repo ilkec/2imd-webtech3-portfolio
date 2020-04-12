@@ -8,9 +8,16 @@ const getMessages = (req, res)=>{
 }
 
 const getMessagesForId = (req, res)=>{
-    res.json({
-        "message": "getting messages " + req.params.id
-    });
+    Message.find({_id: req.params.id}, (err, docs) =>{
+        if(!err){
+            res.json({
+                "status" : "success",
+                "data": {
+                    "message" : docs
+                }
+            }); 
+        }
+    })
 }
 
 const postNewMessage = (req, res)=>{
@@ -57,7 +64,7 @@ const getMessagesForUser = (req, res)=>{
             res.json({
                 "status" : "success",
                 "data": {
-                    "message" : doc
+                    "message" : docs
                 }
             }); 
         }
