@@ -1,3 +1,13 @@
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const messageSchema = new Schema({
+    text: String,
+    user: String,
+    completed: Boolean
+});
+
+const Message = mongoose.model('Message', messageSchema);
+
 const getHomepage = (req, res)=>{ 
     res.send("get homepage");
 }
@@ -15,9 +25,23 @@ const getMessagesForId = (req, res)=>{
 }
 
 const postNewMessage = (req, res)=>{
-    res.json({
-        "message": "POSTING a new message for user Pikachu"
-    });
+    
+    let message = new Message();
+   message.text = "My first message";
+   message.user =  "Joris";
+
+   message.save( (err, doc) => {
+       if(!err){
+        res.json({
+            "status" : "success",
+            "data": {
+                "message" : doc
+            }
+        });
+       }
+   })
+
+   
 } 
 const updateMessage = (req, res)=>{
     res.json({
@@ -31,9 +55,17 @@ const deleteMessage = (req, res)=>{
     });
 }
 const getMessagesForUser = (req, res)=>{
-    res.json({
-        "message": "GETTING message for username " + req.params.username
-    });
+    Message.find({"user": req.params.username}, (err, docs) =>{
+        if(!err){
+            res.json({
+                "status" : "success",
+                "data": {
+                "message" : doc
+                }
+            }); 
+        }
+    })
+   
 }
 
 module.exports.getHomepage = getHomepage;  //verschillende functies die we een aparte naam kunnen geven

@@ -7,6 +7,10 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const apiV1RouterMessages = require('./routes/api/v1/messages');
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/messages', {useNewUrlParser: true});
+
 var app = express();
 
 // view engine setup
