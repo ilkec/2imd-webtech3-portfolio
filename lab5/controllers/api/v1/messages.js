@@ -11,6 +11,12 @@ const getMessages = (req, res)=>{
                 }
             }); 
         }
+        if(err){
+            res.json({
+                 "status": "error",
+                 "message": "Could not find any messages"
+            });
+        }
     })
 }
 
@@ -23,6 +29,12 @@ const getMessagesForId = (req, res)=>{
                     "message" : docs
                 }
             }); 
+        }
+        if(err){
+            res.json({
+                 "status": "error",
+                 "message": "Could not find messages matching this id"
+            });
         }
     })
 }
@@ -48,12 +60,10 @@ const postNewMessage = (req, res)=>{
                 "status": "error",
                 "message": "Could not post this new message"
            });
-
        }
-
    })
-
 } 
+
 const updateMessage = (req, res)=>{
     //bron: https://mongoosejs.com/docs/queries.html -> Model.findByIdAndUpdate()
     Message.findByIdAndUpdate(req.params.id,{text:"this needed an update" }, (err, docs) =>{
@@ -64,6 +74,12 @@ const updateMessage = (req, res)=>{
                     "message" : docs
                 }
             }); 
+        }
+        if(err){
+            res.json({
+                 "status": "error",
+                 "message": "Could not update this message"
+            });
         }
     })
 } 
@@ -77,6 +93,12 @@ const deleteMessage = (req, res)=>{
                 "message" : "The message was removed" 
             }); 
         }
+        if(err){
+            res.json({
+                 "status": "error",
+                 "message": "Could not delete this message"
+            });
+        }
     })
 }
 const getMessagesForUser = (req, res)=>{
@@ -88,6 +110,12 @@ const getMessagesForUser = (req, res)=>{
                     "message" : docs
                 }
             }); 
+        }
+        if(err){
+            res.json({
+                 "status": "error",
+                 "message": "Could not find messages for this user"
+            });
         }
     })
    
