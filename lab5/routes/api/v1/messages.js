@@ -15,6 +15,7 @@ router.put("/:id", controllerMessages.updateMessage);
 
 router.delete("/:id", controllerMessages.deleteMessage);
 
-router.get("/user/username",controllerMessages.getMessagesForUser);
+//bron: https://stackoverflow.com/questions/5024787/update-model-with-mongoose-express-nodejs -> ipv ?user=username gebruik user/:username
+router.get("/user/:username",controllerMessages.getMessagesForUser);
 
 module.exports = router;

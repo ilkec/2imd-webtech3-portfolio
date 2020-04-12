@@ -102,7 +102,7 @@ const deleteMessage = (req, res)=>{
     })
 }
 const getMessagesForUser = (req, res)=>{
-    Message.find({"user": req.params.username}, (err, docs) =>{
+    Message.find({user: req.params.username}, (err, docs) =>{
         if(!err){
             res.json({
                 "status" : "success",
