@@ -1,12 +1,4 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const messageSchema = new Schema({
-    text: String,
-    user: String,
-    completed: Boolean
-});
-
-const Message = mongoose.model('Message', messageSchema);
+const Message = require('../../../models/Message');
 
 
 const getMessages = (req, res)=>{
@@ -36,6 +28,13 @@ const postNewMessage = (req, res)=>{
             }
         });
        }
+
+       if(err){
+           res.json({
+                "status": "error",
+                "message": "Could not post this new message"
+           });
+       }
    })
 
    
@@ -57,7 +56,7 @@ const getMessagesForUser = (req, res)=>{
             res.json({
                 "status" : "success",
                 "data": {
-                "message" : doc
+                    "message" : doc
                 }
             }); 
         }
