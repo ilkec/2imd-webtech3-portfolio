@@ -10,7 +10,7 @@ const getMessages = (req, res)=>{
 
 const getMessagesForId = (req, res)=>{
     res.json({
-        "message": "getting messages" + req.param.id
+        "message": "getting messages " + req.params.id
     });
 }
 
@@ -21,18 +21,18 @@ const postNewMessage = (req, res)=>{
 } 
 const updateMessage = (req, res)=>{
     res.json({
-        "message": "UPDATING a message with id" + req.param.id
+        "message": "UPDATING a message with id " + req.params.id
     });
 } 
 
 const deleteMessage = (req, res)=>{
     res.json({
-        "message": "DELETING a message with id" + req.param.id
+        "message": "DELETING a message with id " + req.params.id
     });
 }
 const getMessagesForUser = (req, res)=>{
     res.json({
-        "message": "GETTING message for username" + req.param.username 
+        "message": "GETTING message for username " + req.params.username
     });
 }
 
