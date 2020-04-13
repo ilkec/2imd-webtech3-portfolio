@@ -2,7 +2,24 @@ const Message = require('../../../models/Message');
 
 
 const getMessages = (req, res)=>{
-    Message.find({}, (err, docs) =>{ //zoeken op niets want je moet alle messages eruit krijgen!
+    if(req.query.user){
+        Message.find({user: req.query.user}, (err, docs) =>{ //zoeken op niets want je moet alle messages eruit krijgen!
+            if(!err){
+                res.json({
+                    "status" : "success",
+                    "data": {
+                        "message" : docs
+                    }
+                }); 
+            }
+            if(err){
+                res.json({
+                     "status": "error",
+                     "message": "Could not find any messages"
+                });
+            }
+        })
+    } else{Message.find({}, (err, docs) =>{ //zoeken op niets want je moet alle messages eruit krijgen!
         if(!err){
             res.json({
                 "status" : "success",
@@ -17,7 +34,8 @@ const getMessages = (req, res)=>{
                  "message": "Could not find any messages"
             });
         }
-    })
+    })}
+    
 }
 
 const getMessagesForId = (req, res)=>{
@@ -101,7 +119,7 @@ const deleteMessage = (req, res)=>{
         }
     })
 }
-const getMessagesForUser = (req, res)=>{
+/*const getMessagesForUser = (req, res)=>{
     Message.find({user: req.params.username}, (err, docs) =>{
         if(!err){
             res.json({
@@ -119,7 +137,7 @@ const getMessagesForUser = (req, res)=>{
         }
     })
    
-}
+}*/
 
 //verschillende functies die we een aparte naam kunnen geven om ze aan te spreken in de routes!
 module.exports.getMessages = getMessages;
@@ -127,4 +145,4 @@ module.exports.getMessagesForId = getMessagesForId;
 module.exports.postNewMessage = postNewMessage;
 module.exports.updateMessage = updateMessage;
 module.exports.deleteMessage = deleteMessage;
-module.exports.getMessagesForUser = getMessagesForUser;
+//*module.exports.getMessagesForUser = getMessagesForUser;*/
