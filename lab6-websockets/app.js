@@ -6,6 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const apiV1RouterStatistics = require('./routes/api/v1/statistics');
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/statistics',{useNewUrlParser: true, useUnifiedTopology: true});
+
 
 var app = express();
 
