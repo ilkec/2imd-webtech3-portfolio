@@ -1,5 +1,14 @@
-extends layout
+doctype html
+html(lang='en')
+    head 
+      //via https://stackoverflow.com/questions/22653420/inserting-meta-using-jade-template-engine
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+      meta(charset="UTF-8")
+      title Hello, World!
+    body
+      h1 Check the confirmed numbers of corona cases
+      div.numbersOfCases 
 
-block content
-  h1= title
-  p Welcome to #{title}
+
+    script(src='http://localhost:3000/primus/primus.js')
+    script(src='../javascript/index.js')

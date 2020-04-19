@@ -1,3 +1,4 @@
+
 primus = Primus.connect("http://localhost:3000", {
     reconnect: {
         max: Infinity // Number: The max delay before we try to reconnect.
