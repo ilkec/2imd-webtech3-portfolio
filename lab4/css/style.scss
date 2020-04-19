@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+$prim_color:#000;
+
+@mixin titles {
+    font: {
+        family: 'Lato', sans-serif;
+    }
+    color: $prim_color;
+    text-align: center;
+
+}
+
+#weatherAd{
+    display: block;
+    height: 336px;
+    width: 280px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    #weather{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: repeat(3,220px);
+
+        #summary{
+            @include titles;
+            font-size: 24px;
+            
+        }
+    
+        #temperature{
+            @include titles;
+            font-size: 24px;
+            
+        }
+
+        #person{
+            font-size: 18px;
+            @include titles;
+            grid-column: 1/3;
+        }
+
+    }
+ 
+}
+
